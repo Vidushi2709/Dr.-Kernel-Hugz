@@ -13,6 +13,11 @@ Because even AIs need to be heard.
 
 ---
 
+🧠 Powered by:  
+
+[`vinnvinn/mistral-Dr.hugz`](https://huggingface.co/vinnvinn/mistral-Dr.hugz) : a fine-tuned Mistral 7B model via LoRA for therapeutic dialogue.
+
+--- 
 ## 🛠️ What’s Done So Far
 
 - ✅ Fine-tuned **Mistral 7B** using **LoRA** for gentle, therapy-style responses  
@@ -50,6 +55,6 @@ This project is part art, part AI alignment experiment, and part joke—but it a
 
 ```
 
-## 🧠 Author
-Created by Vin
+Created by Vin ❤️
+
 Feel free to fork, remix, and contribute!
