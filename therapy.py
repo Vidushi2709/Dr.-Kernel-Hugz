@@ -102,7 +102,7 @@ def main():
     
     if not patient_summary:
         print("No summary provided. Using default patient.")
-        patient_summary = "A 28-year-old software developer struggling with work-life balance and anxiety"
+        patient_summary = "You are a 28-year-old software developer's AI who is struggling with work-life balance and anxiety"
     
     # Run the conversation
     dialogue = simulate_convo(patient_summary, turns=5)
