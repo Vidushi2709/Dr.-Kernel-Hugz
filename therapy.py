@@ -2,19 +2,24 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from peft import PeftModel, PeftConfig
 from mistralai.client import MistralClient
+import os 
 
 # Initialize Mistral (patient)
-client = MistralClient(api_key="NIbuIX8xXFyKFtz6fUJrqQjEabdbmSP6")
+api_key = os.environ["MISTRAL_API_KEY"]
+client = MistralClient(api_key=api_key)
 chat_model = 'mistral-small-latest'
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Load Dr. Hugz model (TinyLlama + fine-tuned adapter)
 peft_model_path = "finetunedhugs"
 peft_config = PeftConfig.from_pretrained(peft_model_path)
 base_model = AutoModelForCausalLM.from_pretrained(
     peft_config.base_model_name_or_path,
-    torch_dtype=torch.float32
+    torch_dtype=torch.float16,
+    device_map={"": device}
 )
-model = PeftModel.from_pretrained(base_model, peft_model_path).to("cpu")
+model = PeftModel.from_pretrained(base_model, peft_model_path).to(device)
 tokenizer = AutoTokenizer.from_pretrained(peft_model_path)
 
 def patient_speaks(message):
